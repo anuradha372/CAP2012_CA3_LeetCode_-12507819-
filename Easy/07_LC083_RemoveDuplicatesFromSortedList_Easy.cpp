@@ -1,3 +1,14 @@
-// 07 LC083 Remove Duplicates from Sorted List
-// CAP2012 CA3 - C++ solution
-
+// LeetCode 83: Remove Duplicates from Sorted List
+// LeetCode supplies ListNode. Time: O(n), Space: O(1)
+class Solution {
+public:
+ ListNode* deleteDuplicates(ListNode* head) {
+  ListNode* curr=head;
+  while(curr!=nullptr && curr->next!=nullptr) {
+   if(curr->val==curr->next->val) {
+    curr->next=curr->next->next;
+   } else curr=curr->next;
+  }
+  return head;
+ }
+};
