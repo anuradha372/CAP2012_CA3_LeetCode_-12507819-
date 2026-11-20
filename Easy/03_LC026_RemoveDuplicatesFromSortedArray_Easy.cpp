@@ -1,3 +1,14 @@
-// 03 LC026 Remove Duplicates from Sorted Array
-// CAP2012 CA3 - C++ solution
-
+// LeetCode 26: Remove Duplicates from Sorted Array
+// Time: O(n), Space: O(1)
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        int k = 1;
+        for (int i = 1; i < (int)nums.size(); i++) {
+            if (nums[i] != nums[k - 1])
+                nums[k++] = nums[i];
+        }
+        return k;
+    }
+};
