@@ -1,3 +1,13 @@
-// 10 LC189 Rotate Array
-// CAP2012 CA3 - C++ solution
-
+// LeetCode 189: Rotate Array
+// Time: O(n), Space: O(1)
+class Solution {
+public:
+ void rotate(vector<int>& nums, int k) {
+  int n=nums.size();
+  if(n==0) return;
+  k%=n;
+  reverse(nums.begin(),nums.end());
+  reverse(nums.begin(),nums.begin()+k);
+  reverse(nums.begin()+k,nums.end());
+ }
+};
