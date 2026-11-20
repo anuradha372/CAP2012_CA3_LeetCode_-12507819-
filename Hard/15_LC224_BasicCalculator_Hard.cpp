@@ -1,3 +1,25 @@
-// 15 LC224 Basic Calculator
-// CAP2012 CA3 - C++ solution
-
+// LeetCode 224: Basic Calculator
+// Handles non-negative integers, +, -, parentheses and spaces.
+// Time: O(n), Space: O(n)
+class Solution {
+public:
+ int calculate(string s) {
+  long long result=0, number=0;
+  int sign=1;
+  stack<int> st;
+  for(char c:s) {
+   if(c>='0' && c<='9') number=number*10+(c-'0');
+   else if(c=='+') { result+=sign*number; number=0; sign=1; }
+   else if(c=='-') { result+=sign*number; number=0; sign=-1; }
+   else if(c=='(') { st.push((int)result); st.push(sign); result=0; sign=1; }
+   else if(c==')') {
+    result+=sign*number; number=0;
+    int prevSign=st.top(); st.pop();
+    int prevResult=st.top(); st.pop();
+    result=prevResult+prevSign*result;
+   }
+  }
+  result+=sign*number;
+  return (int)result;
+ }
+};
